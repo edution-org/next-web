@@ -13,11 +13,6 @@ coverage
 out/
 next-env.d.ts
 
-# expo
-.expo/
-dist/
-expo-env.d.ts
-
 # production
 build
 
@@ -43,3 +38,5 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+.vercel
