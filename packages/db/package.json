@@ -6,11 +6,14 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "push": "drizzle-kit push:mysql"
+    "push": "drizzle-kit push:pg"
   },
   "dependencies": {
     "@planetscale/database": "^1.10.0",
-    "drizzle-orm": "^0.28.2"
+    "@vercel/postgres": "0.4.1",
+    "drizzle-orm": "^0.28.2",
+    "pg": "8.11.2",
+    "@types/pg": "8.10.2"
   },
   "devDependencies": {
     "dotenv-cli": "^7.2.1",
