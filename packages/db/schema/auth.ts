@@ -16,7 +16,7 @@ export const users = pgTable("users", {
   email: text("email").notNull(),
   emailVerified: timestamp("emailVerified", {
     mode: "date",
-  }).default(sql`CURRENT_TIMESTAMP(3)`),
+  }),
   image: text("image"),
 });
 
@@ -31,7 +31,9 @@ export const usersRelations = relations(users, ({ many, one }) => ({
 export const accounts = pgTable(
   "accounts",
   {
-    userId: text("userId").notNull(),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
     type: text("type").$type<AdapterAccount["type"]>().notNull(),
     provider: text("provider").notNull(),
     providerAccountId: text("providerAccountId").notNull(),
@@ -57,7 +59,9 @@ export const sessions = pgTable(
   "sessions",
   {
     sessionToken: text("sessionToken").notNull().primaryKey(),
-    userId: text("userId").notNull(),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
   (session) => ({
