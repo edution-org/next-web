@@ -11,8 +11,9 @@ const config = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
   experimental: {
-    appDir: true
-  }
+    appDir: true,
+    serverActions: true,
+  },
 };
 
 export default config;

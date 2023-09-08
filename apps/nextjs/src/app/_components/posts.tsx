@@ -1,79 +1,11 @@
-"use client";
+import type { RouterOutputs } from "@acme/api";
 
-import { useState } from "react";
+import { createPost, deletePost, getPosts } from "../actions/post";
 
-import { api } from "~/utils/api";
-import type { RouterOutputs } from "~/utils/api";
+export async function PostList() {
+  const posts = await getPosts();
 
-export function CreatePostForm() {
-  const context = api.useContext();
-
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  const { mutateAsync: createPost, error } = api.post.create.useMutation({
-    async onSuccess() {
-      setTitle("");
-      setContent("");
-      await context.post.all.invalidate();
-    },
-  });
-
-  return (
-    <form
-      className="flex w-full max-w-2xl flex-col"
-      onSubmit={async (e) => {
-        e.preventDefault();
-        try {
-          await createPost({
-            title,
-            content,
-          });
-          setTitle("");
-          setContent("");
-          await context.post.all.invalidate();
-        } catch {
-          // noop
-        }
-      }}
-    >
-      <input
-        className="mb-2 rounded bg-white/10 p-2 text-white"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-      />
-      {error?.data?.zodError?.fieldErrors.title && (
-        <span className="mb-2 text-red-500">
-          {error.data.zodError.fieldErrors.title}
-        </span>
-      )}
-      <input
-        className="mb-2 rounded bg-white/10 p-2 text-white"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="Content"
-      />
-      {error?.data?.zodError?.fieldErrors.content && (
-        <span className="mb-2 text-red-500">
-          {error.data.zodError.fieldErrors.content}
-        </span>
-      )}
-      {}
-      <button type="submit" className="rounded bg-pink-400 p-2 font-bold">
-        Create
-      </button>
-      {error?.data?.code === "UNAUTHORIZED" && (
-        <span className="mt-2 text-red-500">You must be logged in to post</span>
-      )}
-    </form>
-  );
-}
-
-export function PostList() {
-  const [posts] = api.post.all.useSuspenseQuery();
-
-  if (posts.length === 0) {
+  if (posts?.length === 0) {
     return (
       <div className="relative flex w-full flex-col gap-4">
         <PostCardSkeleton pulse={false} />
@@ -99,25 +31,27 @@ export function PostList() {
 export function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
 }) {
-  const context = api.useContext();
-  const deletePost = api.post.delete.useMutation();
-
   return (
-    <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
+    <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:bg-white/5">
       <div className="flex-grow">
         <h2 className="text-2xl font-bold text-pink-400">{props.post.title}</h2>
         <p className="mt-2 text-sm">{props.post.content}</p>
       </div>
       <div>
-        <button
-          className="cursor-pointer text-sm font-bold uppercase text-pink-400"
-          onClick={async () => {
-            await deletePost.mutateAsync(props.post.id);
-            await context.post.all.invalidate();
+        <form
+          action={async () => {
+            "use server";
+            await deletePost(props.post.id);
           }}
+          className="flex flex-col items-center"
         >
-          Delete
-        </button>
+          <button
+            type="submit"
+            className="cursor-pointer text-sm font-bold uppercase text-pink-400"
+          >
+            Delete
+          </button>
+        </form>
       </div>
     </div>
   );
@@ -144,5 +78,33 @@ export function PostCardSkeleton(props: { pulse?: boolean }) {
         </p>
       </div>
     </div>
+  );
+}
+
+export function CreatePostForm() {
+  return (
+    <form
+      className="flex w-full max-w-2xl flex-col"
+      action={async (data) => {
+        "use server";
+        const title = data.get("title");
+        const content = data.get("content");
+        await createPost({ title, content });
+      }}
+    >
+      <input
+        name="title"
+        className="mb-2 rounded bg-white/10 p-2 text-white"
+        placeholder="Title"
+      />
+      <input
+        name="content"
+        className="mb-2 rounded bg-white/10 p-2 text-white"
+        placeholder="Content"
+      />
+      <button type="submit" className="rounded bg-pink-400 p-2 font-bold">
+        Create
+      </button>
+    </form>
   );
 }
