@@ -1,23 +1,14 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": [
-    "**/.env",
-    "tsconfig.json"
-  ],
+  "globalDependencies": ["**/.env", "tsconfig.json"],
   "pipeline": {
     "dev": {
       "persistent": true,
       "cache": false
     },
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".next/**",
-        "!.next/cache/**",
-        "next-env.d.ts"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"]
     },
     "lint": {},
     "lint:fix": {},

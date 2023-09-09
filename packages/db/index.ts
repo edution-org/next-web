@@ -1,18 +1,18 @@
-import { drizzle } from "drizzle-orm/node-postgres";
-import { Pool } from "pg";
+import { drizzle } from "drizzle-orm/node-postgres"
+import { Pool } from "pg"
 
-import * as post from "./schema/post";
+import * as post from "./schema/post"
 
-export const schema = { ...post };
+export const schema = { ...post }
 
-export { pgTable as tableCreator } from "./schema/_table";
+export { pgTable as tableCreator } from "./schema/_table"
 
-export * from "drizzle-orm";
+export * from "drizzle-orm"
 
 const client = new Pool({
   connectionString: process.env.DATABASE_URL,
-});
+})
 
-await client.connect();
+await client.connect()
 
-export const db = drizzle(client, { schema });
+export const db = drizzle(client, { schema })
