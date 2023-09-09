@@ -1,5 +1,6 @@
 packages:
   - apps/nextjs
+  - apps/puck
   - packages/api
   - packages/auth
   - packages/db
