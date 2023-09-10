@@ -135,6 +135,9 @@ importers:
       '@radix-ui/react-icons':
         specifier: ^1.3.0
         version: 1.3.0(react@18.2.0)
+      '@vidstack/react':
+        specifier: ^0.6.13
+        version: 0.6.13(@types/react@18.2.20)(maverick.js@0.37.0)(react@18.2.0)(vidstack@0.6.13)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -159,6 +162,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.3.2)
+      vidstack:
+        specifier: ^0.6.13
+        version: 0.6.13
     devDependencies:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.1.0
@@ -1247,6 +1253,10 @@ packages:
       read-yaml-file: 1.1.0
     dev: false
 
+  /@maverick-js/signals@5.11.2:
+    resolution: {integrity: sha512-jKAyNE2O7H+xrigPoqdV0Iq2AeQ6cysfBf/b2jasJ4FfCUKjGyazgtp+pIspTW6skFvpPrvq40Qft+7HuR+Tlg==}
+    dev: false
+
   /@measured/puck@0.6.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-u4Rq2BNaab0qvYzXPPkl7zN64QaCdu/zn2OGo9w8JTeVlTkueaOWODMT1OBelgOybtB/4XVZdp4cgDk6aEAsTA==}
     peerDependencies:
@@ -2206,6 +2216,21 @@ packages:
       bufferutil: 4.0.7
       utf-8-validate: 6.0.3
       ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+    dev: false
+
+  /@vidstack/react@0.6.13(@types/react@18.2.20)(maverick.js@0.37.0)(react@18.2.0)(vidstack@0.6.13):
+    resolution: {integrity: sha512-VGdHv3sCra0ZDXgbKHqHLy/X9AJtbANZoftk+/8EKbEI8bHzEX0AF0h5fncGXwpkV07jcAp3sLuP7kp041hlLA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@types/react': ^18.0.0
+      maverick.js: 0.37.0
+      react: ^18.0.0
+      vidstack: 0.6.13
+    dependencies:
+      '@types/react': 18.2.20
+      maverick.js: 0.37.0
+      react: 18.2.0
+      vidstack: 0.6.13
     dev: false
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
@@ -4170,6 +4195,19 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /maverick.js@0.37.0:
+    resolution: {integrity: sha512-1Dk/9rienLiihlktVvH04ADC2UJTMflC1fOMVQCCaQAaz7hgzDI5i0p/arFbDM52hFFiIcq4RdXtYz47SgsLgw==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@maverick-js/signals': 5.11.2
+      type-fest: 3.13.1
+    dev: false
+
+  /media-captions@0.0.18:
+    resolution: {integrity: sha512-JW18P6FuHdyLSGwC4TQ0kF3WdNj/+wMw2cKOb8BnmY6vSJGtnwJ+vkYj+IjHOV34j3XMc70HDeB/QYKR7E7fuQ==}
+    engines: {node: '>=16'}
+    dev: false
+
   /memoize-one@5.2.1:
     resolution: {integrity: sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==}
     dev: false
@@ -5555,6 +5593,11 @@ packages:
     engines: {node: '>=12.20'}
     dev: false
 
+  /type-fest@3.13.1:
+    resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
+    engines: {node: '>=14.16'}
+    dev: false
+
   /type@1.2.0:
     resolution: {integrity: sha512-+5nt5AAniqsCnu2cEQQdpzCAh33kVx8n0VoFidKpB1dVVLAN/F+bgVOqOJqOnEnrhp222clB5p3vUlD+1QAnfg==}
     dev: true
@@ -5646,6 +5689,15 @@ packages:
     resolution: {integrity: sha512-M6w37eVCMMouJ9V/sdPGnC5H4uDr73/+xdq0FBLO3TFFX1+7wiUY6Es328NN+y43tmY+doUdN9g9J21vqB7iLw==}
     dependencies:
       builtins: 1.0.3
+    dev: false
+
+  /vidstack@0.6.13:
+    resolution: {integrity: sha512-g5wH6Hfc4EQqOI0Mm7qW4D1DWPZfQnlATLZuqpuVAKI8HOz4UGfd1v48MLK9cR+ZfPjVL4/iZLu7YOIdSX3L2g==}
+    engines: {node: '>=16'}
+    dependencies:
+      maverick.js: 0.37.0
+      media-captions: 0.0.18
+      type-fest: 3.13.1
     dev: false
 
   /watchpack@2.4.0:

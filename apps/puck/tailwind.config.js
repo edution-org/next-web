@@ -1,9 +1,9 @@
-import { aspectRatio } from "./utils/aspectRatio"
+import { aspectRatio } from "./utils/puckUtils"
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: ["./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"],
+  content: ["./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./utils/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
