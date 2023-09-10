@@ -1,4 +1,4 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@radix-ui/react-accordion"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@shadcn/ui/accordion"
 
 export function Spoiler({ title, content }) {
     return (
