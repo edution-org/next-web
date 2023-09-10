@@ -129,6 +129,9 @@ importers:
       '@measured/puck':
         specifier: ^0.6.2
         version: 0.6.2(react-dom@18.2.0)(react@18.2.0)
+      '@measured/puck-plugin-heading-analyzer':
+        specifier: ^0.6.2
+        version: 0.6.2(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-accordion':
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
@@ -1255,6 +1258,18 @@ packages:
 
   /@maverick-js/signals@5.11.2:
     resolution: {integrity: sha512-jKAyNE2O7H+xrigPoqdV0Iq2AeQ6cysfBf/b2jasJ4FfCUKjGyazgtp+pIspTW6skFvpPrvq40Qft+7HuR+Tlg==}
+    dev: false
+
+  /@measured/puck-plugin-heading-analyzer@0.6.2(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-3SAO8JtalBb5cHMNpq7cKBOAsZKMmOFBMAxvrqe/GGHdqbViII31YVhIHx/3rjyPfZx9y979hZz1wr/b7o9owQ==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-from-json: 0.7.2(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
+    transitivePeerDependencies:
+      - prop-types
+      - react-dom
     dev: false
 
   /@measured/puck@0.6.2(react-dom@18.2.0)(react@18.2.0):
@@ -4964,6 +4979,19 @@ packages:
     dependencies:
       prop-types: 15.8.1
       react: 18.2.0
+    dev: false
+
+  /react-from-json@0.7.2(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-of/jhr45fs4S+GefkRsj4T5wGp+T9o8ddaxni6nAUyel/VrLFS6ogDbnzaSX/UFfBT5Xah59OVKtQtdrYsBWPw==}
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      prop-types: ^15.5.4
+      react: ^15.0.0 || ^16.0.0
+      react-dom: ^15.0.0 || ^16.0.0
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-is@16.13.1:
