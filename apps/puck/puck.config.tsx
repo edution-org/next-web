@@ -1,4 +1,7 @@
 import type { Config } from "@measured/puck"
+import { selectAspectRatios } from "@utils/aspectRatio"
+import { Image } from "components/Image"
+import { Link } from "components/Link"
 import { Spoiler } from "components/Spoiler"
 
 import { Root } from "./components/Root"
@@ -8,9 +11,11 @@ import { Typography } from "./components/Typography"
 type Props = {
   Typography: PropsFrom<typeof Typography>
   Spoiler: PropsFrom<typeof Spoiler>
+  Link: PropsFrom<typeof Link>
+  Image: PropsFrom<typeof Image>
 }
 
-export const config: Config<Props> = {
+export const config = {
   root: {
     render: Root,
   },
@@ -47,7 +52,42 @@ export const config: Config<Props> = {
       },
       render: Spoiler,
     },
+    Link: {
+      fields: {
+        href: { type: "text" },
+        content: { type: "text" },
+      },
+      defaultProps: {
+        href: "/",
+        content: "Internal Link",
+      },
+      render: Link,
+    },
+    Image: {
+      fields: {
+        src: { type: "text" },
+        alt: { type: "text" },
+        aspectRatio: { type: "select", options: selectAspectRatios },
+        align: {
+          type: "radio",
+          options: [
+            { label: "Left", value: "left" },
+            { label: "Center", value: "center" },
+            { label: "Right", value: "right" },
+          ],
+        },
+        maxWidth: { type: "number" },
+      },
+      defaultProps: {
+        src: "https://picsum.photos/200/300",
+        alt: "Description of the image",
+        aspectRatio: "16/9",
+        align: "left",
+        maxWidth: 100,
+      },
+      render: Image,
+    },
   },
-}
+} satisfies Config<Props>
 
 export default config
