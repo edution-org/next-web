@@ -1,4 +1,6 @@
-module.exports = {
+const withBuilderDevTools = require("@builder.io/dev-tools/next")();
+
+module.exports = withBuilderDevTools({
   reactStrictMode: true,
   transpilePackages: ["ui"],
   images: {
@@ -11,4 +13,4 @@ module.exports = {
       },
     ],
   },
-}
+});

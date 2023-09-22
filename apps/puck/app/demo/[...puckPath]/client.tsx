@@ -5,7 +5,7 @@ import type { Data } from "@measured/puck"
 import { Button, Puck, Render } from "@measured/puck"
 import headingAnalyzer from "@measured/puck-plugin-heading-analyzer"
 
-import config from "../../puck.config"
+import config from "../../../puck.config"
 
 const isBrowser = typeof window !== "undefined"
 
@@ -35,7 +35,7 @@ export function Client({ path, dataBE, isEdit }: { path: string; dataBE: Data; i
         plugins={[headingAnalyzer]}
         renderHeaderActions={() => (
           <>
-            <Button href={path} newTab variant='secondary'>
+            <Button href={`/demo${path}`} newTab variant='secondary'>
               View page
             </Button>
           </>

@@ -1,5 +1,3 @@
-import { ReactNode } from "react"
-
 const variants = {
   h1: {
     tag: "h1",

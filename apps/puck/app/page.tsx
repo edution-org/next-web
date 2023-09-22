@@ -1,1 +1,3 @@
-export { default, generateMetadata } from "./[...puckPath]/page"
+import Index from "./[...page]/page"
+
+export default Index
