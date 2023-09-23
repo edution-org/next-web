@@ -27,7 +27,7 @@ export function Client({ path, dataBE, isEdit }: { path: string; dataBE: Data; i
   if (isEdit) {
     return (
       <Puck
-        config={config}
+        config={config as any}
         data={data}
         onPublish={async (data: Data) => {
           localStorage.setItem(key, JSON.stringify(data))
@@ -44,5 +44,5 @@ export function Client({ path, dataBE, isEdit }: { path: string; dataBE: Data; i
     )
   }
 
-  return <Render config={config} data={data} />
+  return <Render config={config as any} data={data} />
 }

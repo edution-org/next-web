@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { PropsFrom } from "@utils/types"
 import { TypeAnimation } from "react-type-animation"
 
 type TypeAnimationTypes = PropsFrom<typeof TypeAnimation>
@@ -16,7 +17,7 @@ export function AnimatedWrite({ texts, tag }: Props) {
   return (
     <div className='transition-colors duration-1000' style={{ color: textColor }}>
       <TypeAnimation
-        className="after:animate-blink after:ml-0.5 after:opacity-10 after:content-['|']"
+        className="after:ml-0.5 after:animate-blink after:opacity-10 after:content-['|']"
         preRenderFirstString={true}
         cursor={false}
         sequence={sequence}
