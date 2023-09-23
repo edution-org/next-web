@@ -1,5 +1,6 @@
 import type { Config } from "@measured/puck"
 import { selectAspectRatios } from "@utils/puckUtils"
+import { PropsFrom } from "@utils/types"
 import { Audio } from "components/Audio"
 import { Image } from "components/Image"
 import { Link } from "components/Link"
